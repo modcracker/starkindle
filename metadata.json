@@ -1,0 +1,6 @@
+{
+  "name": "StarKindle Portfolio",
+  "description": "Showcase and secure bidding platform for the premium domain starkindle.com, linking directly to GoDaddy.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
