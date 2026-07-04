@@ -1,5 +1,6 @@
 import type {Metadata} from 'next';
 import { Inter, Space_Grotesk, Lora } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css'; // Global styles
 
 const inter = Inter({
@@ -36,6 +37,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${lora.variable}`}>
       <body suppressHydrationWarning className="bg-[#fbfcfa] text-neutral-900 font-sans min-h-screen selection:bg-neutral-250">
         {children}
+        <Analytics />
       </body>
     </html>
   );
