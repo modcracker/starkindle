@@ -1,7 +1,14 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'WHOIS Registration History & Timber Archive since 2009 - StarKindle',
+  description: 'Historical registrant profile detailing original registration epoch from October 2009, server coordinate permanence, and background check logs.',
+  alternates: {
+    canonical: 'https://www.starkindle.com/whois-registration-history',
+  }
+};
 import { 
   ArrowLeft, 
   Clock, 

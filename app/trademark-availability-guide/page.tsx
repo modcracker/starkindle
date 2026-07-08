@@ -1,7 +1,14 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Intellectual Property & USPTO Title Clearance Verification - StarKindle',
+  description: 'Legal compliance, USPTO registration verifications, and title clearance protocols. Confirming clean title release to commercial acquiring entities.',
+  alternates: {
+    canonical: 'https://www.starkindle.com/trademark-availability-guide',
+  }
+};
 import { 
   ArrowLeft, 
   ShieldCheck, 

@@ -21,6 +21,10 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.starkindle.com'),
+  alternates: {
+    canonical: '/',
+  },
   title: 'starkindle.com is for Sale | Premium Domain Portfolio',
   description: 'The premium domain name starkindle.com is available for immediate acquisition. Explore potential business use cases, brand value analysis, and buy securely on GoDaddy.',
   keywords: ['starkindle', 'starkindle.com', 'domain for sale', 'buy domain', 'premium domain', 'GoDaddy domain', 'feelize', 'brandable domain'],

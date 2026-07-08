@@ -1,7 +1,14 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'E-book & Digital Creator Platform Growth Channels - StarKindle',
+  description: 'Optimizing growth channels for digital document delivery interfaces, independent author ecosystems, and lexical suites under the StarKindle banner.',
+  alternates: {
+    canonical: 'https://www.starkindle.com/digital-publishing-growth',
+  }
+};
 import { 
   ArrowLeft, 
   BookOpen, 

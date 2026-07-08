@@ -1,7 +1,14 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Aerospace Telemetry Core Application Specifications - StarKindle',
+  description: 'Deep-dive specifications targeting ground stations, star maps, coordinate trackers, and telescope calibration platforms within the StarKindle network.',
+  alternates: {
+    canonical: 'https://www.starkindle.com/aerospace-telemetry-branding',
+  }
+};
 import { 
   ArrowLeft, 
   Radio, 

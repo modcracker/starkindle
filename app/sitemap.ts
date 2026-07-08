@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://starkindle.com';
+  const baseUrl = 'https://www.starkindle.com';
   
   const paths = [
     { url: '', changeFrequency: 'weekly' as const, priority: 1.0 },

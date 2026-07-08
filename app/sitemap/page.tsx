@@ -1,7 +1,14 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Sitemap Index & Canonical Namespace Directory - StarKindle',
+  description: 'A comprehensive visual sitemap directory linking to all authority nodes, niche specifications, legal clearance docs, and domain acquisition guides.',
+  alternates: {
+    canonical: 'https://www.starkindle.com/sitemap',
+  }
+};
 import { 
   ArrowLeft, 
   Map, 

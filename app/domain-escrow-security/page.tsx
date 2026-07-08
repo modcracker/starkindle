@@ -1,7 +1,14 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Secure Settlement, Escrow Brokerage & Registry Pushes - StarKindle',
+  description: 'Brokerage safeguards, automated API registry pushes, and ICANN policy fulfillment parameters. Acquire domains safely via secure GoDaddy broker escrow.',
+  alternates: {
+    canonical: 'https://www.starkindle.com/domain-escrow-security',
+  }
+};
 import { 
   ArrowLeft, 
   ShieldCheck, 

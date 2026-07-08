@@ -1,7 +1,14 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Compound Naming Science & Brand Memorability Metrics - StarKindle',
+  description: 'Symmetry, phonetics memorability metrics, prefix and suffix pairings to capture target market share using brandable compound naming conventions.',
+  alternates: {
+    canonical: 'https://www.starkindle.com/brand-naming-synergy',
+  }
+};
 import { 
   ArrowLeft, 
   Sparkles, 

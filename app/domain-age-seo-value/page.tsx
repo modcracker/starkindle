@@ -1,7 +1,14 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Domain Age SEO Authority & Sandbox Exemption Guide - StarKindle',
+  description: 'Technical profile explaining domain age benefits, crawler priority indexing, and sandbox exemption guidelines for over-decade registered naming channels.',
+  alternates: {
+    canonical: 'https://www.starkindle.com/domain-age-seo-value',
+  }
+};
 import { 
   ArrowLeft, 
   Award, 

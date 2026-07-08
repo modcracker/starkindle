@@ -1,7 +1,14 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Acquisition Guidelines & Purchaser FAQ - StarKindle',
+  description: 'Direct reference FAQ regarding transfer timelines, cost details, and automated escrow brokering operations for premium domains.',
+  alternates: {
+    canonical: 'https://www.starkindle.com/faq-domain-acquisition',
+  }
+};
 import { 
   ArrowLeft, 
   HelpCircle, 

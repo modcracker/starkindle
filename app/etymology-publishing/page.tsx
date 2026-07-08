@@ -1,7 +1,14 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Literature & Creator Platform Etymology - StarKindle',
+  description: 'Analyzing independent literary development, NLP suites, e-reading distribution, and digital publishing under the StarKindle domain authority.',
+  alternates: {
+    canonical: 'https://www.starkindle.com/etymology-publishing',
+  }
+};
 import { 
   ArrowLeft, 
   BookOpen, 

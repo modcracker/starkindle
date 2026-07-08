@@ -1,7 +1,14 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Premium Aged Domain Portfolio & Brandable Assets - StarKindle',
+  description: 'Explore our curated registry of premium, aged global commercial .com domains. High-leverage assets optimized for instant search index authority.',
+  alternates: {
+    canonical: 'https://www.starkindle.com/premium-portfolio',
+  }
+};
 import { 
   ArrowLeft, 
   ExternalLink,

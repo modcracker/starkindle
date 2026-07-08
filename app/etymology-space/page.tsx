@@ -1,7 +1,14 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Aerospace & Space Telemetry Etymology - StarKindle',
+  description: 'Celestial tracking metrics and aerospace alignment analysis. Explore deep-space transceiver node naming and coordinate systems under the StarKindle namespace.',
+  alternates: {
+    canonical: 'https://www.starkindle.com/etymology-space',
+  }
+};
 import { 
   ArrowLeft, 
   Map, 
