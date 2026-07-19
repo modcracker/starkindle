@@ -2,6 +2,19 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { motion } from 'motion/react';
+
+const TICKER_ITEMS = [
+  { label: "starkindle.com", status: "Premium Asset Listed", type: "Active Portfolio" },
+  { label: "Institutional Trust", status: "GoDaddy Escrow Secured", type: "100% Guaranteed" },
+  { label: "feelize.com", status: "Acquired", price: "$14,500", type: "Recent Sale" },
+  { label: "stellarignition.com", status: "Acquired", price: "$9,200", type: "Recent Sale" },
+  { label: "kindlenode.com", status: "Acquired", price: "$6,800", type: "Recent Sale" },
+  { label: "Domain Age Authority", status: "Age Tenure: 17 Years (2009)", type: "SEO Trust" },
+  { label: "Registry Clearance", status: "No Trademark Infringements", type: "Clean Title" },
+  { label: "starorbit.com", status: "Acquired", price: "$18,500", type: "Recent Sale" },
+  { label: "aerospacenaming.com", status: "Acquired", price: "$12,400", type: "Recent Sale" },
+];
 import { 
   ArrowRight, 
   ShieldCheck, 
@@ -33,6 +46,11 @@ export default function Home() {
   // FAQ interactive state
   const [openFaq, setOpenFaq] = React.useState<number | null>(0);
 
+  // Interactive Brand Lab States
+  const [activeTab, setActiveTab] = React.useState<'purchase' | 'simulator' | 'specs'>('purchase');
+  const [simSubdomain, setSimSubdomain] = React.useState<string>('');
+  const [simIndustry, setSimIndustry] = React.useState<string>('tech');
+
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
   };
@@ -56,158 +74,433 @@ export default function Home() {
     }
   ];
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 text-neutral-900 flex flex-col justify-between selection:bg-indigo-500/20 font-sans" id="domain_land_clean">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
+      {/* 2. LAYER: Premium Edge-to-Edge Architectural Hero Section */}
+      <div className="w-full relative overflow-hidden bg-[#fafbfc] border-b border-slate-200/50 py-16 sm:py-24" id="top_vibrant_fold">
+        {/* Luminous Warm/Indigo Celestial Glow - spans edge-to-edge */}
+        <div className="absolute top-[-20%] left-[10%] w-[1200px] h-[800px] rounded-full bg-gradient-to-tr from-indigo-100/30 via-amber-100/10 to-purple-100/25 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-[-10%] right-[5%] w-[800px] h-[600px] rounded-full bg-gradient-to-tl from-indigo-100/20 via-pink-100/10 to-transparent blur-3xl pointer-events-none" />
+        
+        {/* Fine Architectural Dot Grid Background */}
+        <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1.5px,transparent_1.5px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_100%_100%_at_50%_30%,#000_80%,transparent_100%)] opacity-60 pointer-events-none" />
 
-      {/* 2. LAYER: High-Impact, Vibrant, Colorful & Bright Hero Section */}
-      <div className="relative overflow-hidden py-14 sm:py-20 bg-gradient-to-b from-indigo-105/40 via-purple-50/15 to-white border-b border-indigo-100/20" id="top_vibrant_fold">
-        {/* Dynamic Colorful glows and aura meshes */}
-        <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-rose-350/20 via-pink-200/10 to-transparent blur-4xl pointer-events-none animate-pulse" />
-        <div className="absolute top-1/3 right-1/4 w-[450px] h-[450px] rounded-full bg-gradient-to-tr from-amber-205/20 via-indigo-200/15 to-transparent blur-4xl pointer-events-none" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_80%,transparent_100%)] pointer-events-none" />
-
-        <main className="max-w-3xl mx-auto px-6 text-center relative z-10 flex flex-col items-center justify-center">
-          {/* Sparse Premium Badge */}
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500/10 via-pink-500/10 to-indigo-500/10 border border-pink-200/40 rounded-full px-3.5 py-1 text-[11px] font-extrabold text-indigo-900 tracking-wide mb-6 shadow-3xs">
-            <Sparkles className="h-3.5 w-3.5 text-amber-500 animate-spin-slow" />
-            <span>PREMIUM DIGITAL REAL ESTATE</span>
-          </div>
-
-          {/* AMAZING BALANCED HERO LOGO */}
-          <div className="relative mb-6 group" id="hero_massive_logo">
-            {/* Pulsing cosmic halo ring */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-amber-400 via-pink-500 to-indigo-500 rounded-full blur-xl opacity-30 group-hover:opacity-50 scale-95 hover:scale-105 transition duration-700 animate-pulse pointer-events-none" />
+        {/* Cinematic Edge-to-Edge Grid Container */}
+        <main className="w-full max-w-[1600px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-24 relative z-10">
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-24 items-center"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.1 }
+              }
+            }}
+          >
             
-            {/* The Glass Badge Container */}
-            <div className="relative bg-white/85 border border-white/65 p-5 sm:p-6 rounded-full shadow-md hover:shadow-xl transition-all duration-500 hover:scale-105 flex items-center justify-center">
-              <svg className="h-16 w-16 sm:h-20 sm:w-20 filter drop-shadow-sm" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                
-                {/* Rotating Outer Planetary Tracker Ring */}
-                <circle cx="32" cy="32" r="29" stroke="url(#huge-ring-grad)" strokeWidth="1" strokeDasharray="3 4">
-                  <animateTransform 
-                    attributeName="transform" 
-                    type="rotate" 
-                    from="0 32 32" 
-                    to="360 32 32" 
-                    dur="35s" 
-                    repeatCount="indefinite" 
-                  />
-                </circle>
+            {/* Left Column: Premium Editorial Canvas */}
+            <div className="lg:col-span-7 space-y-8 text-left">
+              {/* Premium Status Pill */}
+              <motion.div 
+                variants={{
+                  hidden: { opacity: 0, y: 10 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                className="inline-flex items-center gap-2 bg-white/90 border border-slate-200/80 rounded-full px-4 py-1.5 text-[10px] font-bold text-slate-750 tracking-widest uppercase font-mono shadow-3xs"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-indigo-600 animate-pulse" />
+                <span>Premium Asset Release</span>
+              </motion.div>
 
-                {/* Counter-Rotating Mid Ring */}
-                <circle cx="32" cy="32" r="23" stroke="url(#huge-ring-grad)" strokeWidth="1.5" strokeDasharray="30 15">
-                  <animateTransform 
-                    attributeName="transform" 
-                    type="rotate" 
-                    from="360 32 32" 
-                    to="0 32 32" 
-                    dur="20s" 
-                    repeatCount="indefinite" 
-                  />
-                </circle>
+              {/* Master Editorial Typography */}
+              <div className="space-y-5">
+                <motion.h1 
+                  variants={{
+                    hidden: { opacity: 0, y: 15 },
+                    visible: { opacity: 1, y: 0 }
+                  }}
+                  className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black text-slate-950 tracking-tight leading-[1.05] font-sans"
+                >
+                  Acquire the premium domain <span className="relative inline-block bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-indigo-700 to-indigo-950 font-black">starkindle.com</span>
+                </motion.h1>
+                <motion.h2 
+                  variants={{
+                    hidden: { opacity: 0, y: 15 },
+                    visible: { opacity: 1, y: 0 }
+                  }}
+                  className="text-lg sm:text-xl font-serif italic text-slate-600 font-normal leading-relaxed max-w-2xl"
+                >
+                  A rare, 17-year aged digital asset crafted for technology innovators, media publishing houses, and global deep-tech ventures.
+                </motion.h2>
+              </div>
 
-                {/* Intricate Inner Radar Spokes */}
-                <line x1="14" y1="32" x2="50" y2="32" stroke="url(#spoke-grad)" strokeWidth="0.5" strokeDasharray="2 2" />
-                <line x1="32" y1="14" x2="32" y2="50" stroke="url(#spoke-grad)" strokeWidth="0.5" strokeDasharray="2 2" />
+              {/* High-Impact Copywriting with fine borders */}
+              <motion.p 
+                variants={{
+                  hidden: { opacity: 0, y: 15 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                className="text-slate-500 text-sm sm:text-base leading-relaxed max-w-xl font-sans"
+              >
+                In the digital economy, trust is your ultimate asset. Registered first in <span className="font-semibold text-slate-800">2009</span>, starkindle.com offers instant corporate authority, pristine search history, and direct registry clearance—bypassing traditional sandbox cycles entirely.
+              </motion.p>
 
-                {/* Massive Celestial Glowing Star Element */}
-                <path 
-                  d="M32 3L37.5 21.5L56 21.5L41.5 31.5L47 49L32 39L17 49L22.5 31.5L8 21.5L26.5 21.5L32 3Z" 
-                  fill="url(#huge-star-grad)" 
-                  className="filter drop-shadow-[0_0_14px_rgba(245,158,11,0.6)]"
-                />
-
-                {/* Overlapping Inner Geometric Diamond Shield */}
-                <path 
-                  d="M32 12L36 24.5L48.5 28.5L36 32.5L32 45L28 32.5L15.5 28.5L28 24.5L32 12Z" 
-                  fill="url(#inner-diamond-grad)" 
-                  opacity="0.9"
-                />
-
-                {/* Core Spark Ignite Orb */}
-                <circle cx="32" cy="28.5" r="5" fill="url(#core-ignite)" />
-                <circle cx="32" cy="28.5" r="2" fill="#ffffff" />
-
-                <defs>
-                  <linearGradient id="huge-star-grad" x1="8" y1="3" x2="56" y2="49" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#FBBF24" /> {/* Sunburst Gold */}
-                    <stop offset="0.33" stopColor="#F59E0B" />
-                    <stop offset="0.66" stopColor="#EC4899" /> {/* Celestial Pink */}
-                    <stop offset="1" stopColor="#6366F1" /> {/* Deep Indigo */}
-                  </linearGradient>
-
-                  <linearGradient id="inner-diamond-grad" x1="15.5" y1="12" x2="48.5" y2="45" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#FFF" stopOpacity="0.9" />
-                    <stop offset="0.5" stopColor="#FFE082" />
-                    <stop offset="1" stopColor="#F48FB1" />
-                  </linearGradient>
-
-                  <linearGradient id="huge-ring-grad" x1="2" y1="2" x2="62" y2="62" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#E2E8F0" />
-                    <stop offset="0.5" stopColor="#A5F3FC" stopOpacity="0.6" />
-                    <stop offset="1" stopColor="#C7D2FE" />
-                  </linearGradient>
-
-                  <linearGradient id="spoke-grad" x1="14" y1="14" x2="50" y2="50" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#F59E0B" stopOpacity="0.1" />
-                    <stop offset="0.5" stopColor="#EC4899" stopOpacity="0.4" />
-                    <stop offset="1" stopColor="#6366F1" stopOpacity="0.1" />
-                  </linearGradient>
-
-                  <radialGradient id="core-ignite" cx="32" cy="28.5" r="5" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#FEE2E2" />
-                    <stop offset="0.4" stopColor="#EF4444" />
-                    <stop offset="1" stopColor="#B91C1C" />
-                  </radialGradient>
-                </defs>
-              </svg>
+              {/* Modern Minimalist Horizontal Metric Dashboard */}
+              <motion.div 
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                className="grid grid-cols-3 gap-6 pt-8 border-t border-slate-200/60 max-w-xl"
+              >
+                <div>
+                  <span className="block text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">Domain Age</span>
+                  <span className="text-sm sm:text-base font-extrabold text-slate-800 font-mono">{ageTenure} Years (2009)</span>
+                </div>
+                <div className="border-l border-slate-200/60 pl-6">
+                  <span className="block text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">Registry Status</span>
+                  <span className="text-sm sm:text-base font-extrabold text-emerald-650 flex items-center gap-1.5 font-mono">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" /> Verified Clear
+                  </span>
+                </div>
+                <div className="border-l border-slate-200/60 pl-6">
+                  <span className="block text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">Registry Partner</span>
+                  <span className="text-sm sm:text-base font-extrabold text-indigo-650 font-mono">GoDaddy Escrow</span>
+                </div>
+              </motion.div>
             </div>
-          </div>
 
-          {/* Majestic Balanced Domain Title */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-neutral-950 tracking-tighter leading-tight mb-5">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-neutral-950 via-indigo-950 to-neutral-800">starkindle</span>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-pink-500 to-amber-500 font-black font-sans text-4xl sm:text-5xl md:text-6xl">.com</span>
-          </h1>
+            {/* Right Column: Interactive Authority & Checkout Hub (Widescreen Floating Card) */}
+            <div className="lg:col-span-5 flex flex-col justify-center">
+              <div className="w-full max-w-md bg-white/80 border border-slate-200/80 backdrop-blur-md rounded-2xl shadow-xl overflow-hidden flex flex-col" id="hero_tabbed_hub">
+                {/* Hub Navigation Tabs */}
+                <div className="grid grid-cols-3 bg-slate-50/50 border-b border-slate-200/60 p-1" id="hub_tabs">
+                  <button
+                    onClick={() => setActiveTab('purchase')}
+                    className={`py-2.5 px-1 text-center rounded-lg text-xs font-bold transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer ${
+                      activeTab === 'purchase'
+                        ? 'bg-white text-indigo-950 shadow-sm border border-slate-200/30 font-extrabold'
+                        : 'text-slate-500 hover:text-slate-800'
+                    }`}
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+                    <span>Purchase</span>
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('simulator')}
+                    className={`py-2.5 px-1 text-center rounded-lg text-xs font-bold transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer ${
+                      activeTab === 'simulator'
+                        ? 'bg-white text-indigo-950 shadow-sm border border-slate-200/30 font-extrabold'
+                        : 'text-slate-500 hover:text-slate-800'
+                    }`}
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                    <span>Brand Lab</span>
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('specs')}
+                    className={`py-2.5 px-1 text-center rounded-lg text-xs font-bold transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer ${
+                      activeTab === 'specs'
+                        ? 'bg-white text-indigo-950 shadow-sm border border-slate-200/30 font-extrabold'
+                        : 'text-slate-500 hover:text-slate-800'
+                    }`}
+                  >
+                    <Globe className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
+                    <span>Domain Specs</span>
+                  </button>
+                </div>
 
-          {/* Core Descriptive Pitch */}
-          <p className="font-serif italic text-base sm:text-lg md:text-2xl text-neutral-750 leading-relaxed max-w-2xl mb-5">
-            &ldquo;An uncompromised naming asset establishing instantaneous market authority, credibility, and brand recognition.&rdquo;
-          </p>
+                {/* Tab content wrapper */}
+                <div className="p-5 sm:p-6 min-h-[360px] flex flex-col justify-between">
+                  
+                  {activeTab === 'purchase' && (
+                    <motion.div
+                      key="purchase_tab"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="space-y-4 flex flex-col justify-between h-full flex-1"
+                    >
+                      <div className="space-y-4">
+                        {/* Streamlined minimal representation */}
+                        <div className="flex justify-center py-6">
+                          <div className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-indigo-50/50 border border-indigo-100/50 shadow-3xs">
+                            <Globe className="w-5 h-5 text-indigo-650 animate-pulse" />
+                            <span className="text-lg font-black text-slate-900 font-mono tracking-tight">starkindle.com</span>
+                          </div>
+                        </div>
 
-          <p className="text-neutral-500 text-xs sm:text-sm max-w-lg mb-6 leading-relaxed">
-            Registered first in <span className="font-semibold text-neutral-900">2009</span>. A celestial, highly rhythmic compound linking universe-scale vision with active ignition. Verified free from trademark bounds.
-          </p>
+                        <div className="text-center space-y-1">
+                          <h3 className="text-sm font-extrabold text-slate-900 tracking-tight">Direct Acquisition Channel</h3>
+                          <p className="text-[11px] text-slate-500 max-w-sm mx-auto leading-relaxed">
+                            Secure standard transfer is handled immediately with total protection. Fully secured escrow release is managed by our official partner GoDaddy.
+                          </p>
+                        </div>
 
-          {/* Secure Purchase Card with bright clean tones */}
-          <div className="w-full max-w-md bg-white border border-indigo-100/80 p-5 sm:p-6 rounded-2xl shadow-sm text-center hover:border-indigo-200 transition-all duration-300">
-            <span className="block text-[10px] font-extrabold uppercase tracking-wider text-indigo-550 mb-2.5 font-mono">
-              Brokerage &amp; Escrow Guaranteed by GoDaddy
-            </span>
-            
-            <a 
-              href={GODADDY_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-500 hover:from-indigo-700 hover:to-indigo-600 text-white font-extrabold text-xs py-3.5 px-6 rounded-xl transition-all shadow-md transform hover:-translate-y-0.5 active:translate-y-0"
-              id="main_godaddy_cta"
-            >
-              <span>Instant Buy Domain via GoDaddy</span>
-              <ArrowRight className="h-4.5 w-4.5 text-amber-300 shrink-0" />
-            </a>
+                        <div className="bg-slate-50/70 border border-slate-100 rounded-xl p-3 flex items-center justify-between">
+                          <div className="text-left">
+                            <span className="block text-[8px] font-bold text-slate-400 uppercase tracking-widest font-mono">ESTABLISHED ON REGISTRY</span>
+                            <span className="text-[10px] font-extrabold text-slate-700 font-mono">July 2009 (Aged)</span>
+                          </div>
+                          <div className="text-right">
+                            <span className="block text-[8px] font-bold text-slate-400 uppercase tracking-widest font-mono">TRANSFER SPEED</span>
+                            <span className="text-[10px] font-extrabold text-emerald-655 flex items-center gap-1 justify-end font-mono">
+                              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" /> Instant Push
+                            </span>
+                          </div>
+                        </div>
+                      </div>
 
-            <div className="flex items-center justify-center gap-4 mt-3 text-[11px] text-neutral-500 font-medium">
-              <span className="flex items-center gap-1">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" /> Secure Escrow
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1">
-                <Clock className="w-3.5 h-3.5 text-indigo-600" /> Instant push
-              </span>
+                      <div className="space-y-3 pt-2">
+                        <a 
+                          href={GODADDY_LINK}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs py-4 px-6 rounded-xl transition-all shadow-sm hover:shadow-md transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                          id="main_godaddy_cta_hub"
+                        >
+                          <span>Secure Purchase at GoDaddy</span>
+                          <ArrowRight className="h-4 w-4 text-slate-400 shrink-0" />
+                        </a>
+
+                        <div className="flex items-center justify-center gap-4 text-[10px] text-slate-500 font-medium font-mono">
+                          <span className="flex items-center gap-1">
+                            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" /> GoDaddy Escrow
+                          </span>
+                          <span>•</span>
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-3 h-3 text-indigo-600" /> Instant Push
+                          </span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {activeTab === 'simulator' && (
+                    <motion.div
+                      key="simulator_tab"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="space-y-4 flex flex-col justify-between h-full flex-1"
+                    >
+                      <div className="space-y-3">
+                        <div className="space-y-1">
+                          <h3 className="text-sm font-extrabold text-slate-900 tracking-tight">Interactive Brand Sandbox</h3>
+                          <p className="text-[11px] text-slate-500">
+                            Simulate subdomains and see how this 17-year aged authority asset matches your product identity.
+                          </p>
+                        </div>
+
+                        {/* Interactive Subdomain input */}
+                        <div className="space-y-1">
+                          <label className="block text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">SIMULATE SUBDOMAIN</label>
+                          <div className="flex rounded-lg border border-slate-200 bg-white shadow-3xs overflow-hidden focus-within:border-indigo-400 focus-within:ring-2 focus-within:ring-indigo-100 transition-all">
+                            <input 
+                              type="text" 
+                              placeholder="e.g. app, api, ventures" 
+                              value={simSubdomain}
+                              onChange={(e) => setSimSubdomain(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ''))}
+                              className="px-3 py-1.5 text-xs text-slate-800 bg-transparent flex-1 focus:outline-none placeholder-slate-350"
+                            />
+                            <span className="bg-slate-50 px-3 py-1.5 text-[11px] text-slate-500 border-l border-slate-200 font-bold flex items-center shrink-0 font-mono">
+                              .starkindle.com
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Industry Preset selectors */}
+                        <div className="space-y-1">
+                          <label className="block text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">TARGET SECTOR</label>
+                          <div className="grid grid-cols-2 gap-1.5">
+                            {[
+                              { id: 'tech', label: '🚀 Deep Tech & Space' },
+                              { id: 'publishing', label: '📚 Media & Publishing' },
+                              { id: 'ai', label: '🧠 AI & Analytics' },
+                              { id: 'finance', label: '💼 Venture Capital' }
+                            ].map((ind) => (
+                              <button
+                                key={ind.id}
+                                onClick={() => setSimIndustry(ind.id)}
+                                className={`px-2 py-1 text-[10px] font-semibold rounded-lg text-left border transition-all cursor-pointer ${
+                                  simIndustry === ind.id
+                                    ? 'bg-indigo-50/50 border-indigo-200 text-indigo-950 font-extrabold'
+                                    : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+                                }`}
+                              >
+                                {ind.label}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Live Brand Visualizer Card */}
+                      <div className="bg-slate-950 text-slate-100 p-4 rounded-xl border border-neutral-800 space-y-2.5 shadow-xs relative overflow-hidden mt-2">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-tr from-indigo-500/10 to-transparent rounded-full blur-xl pointer-events-none" />
+                        <div className="flex items-center justify-between border-b border-neutral-900 pb-1.5">
+                          <span className="text-[8px] font-bold text-slate-400 font-mono tracking-widest uppercase flex items-center gap-1">
+                            <span className="h-1 w-1 rounded-full bg-indigo-400 animate-ping" /> LIVE BRAND PREVIEW
+                          </span>
+                          <span className="text-[8px] bg-indigo-500/15 text-indigo-300 font-bold px-1.5 py-0.5 rounded uppercase font-mono border border-indigo-400/20">
+                            SEO TRUST ASSURED
+                          </span>
+                        </div>
+                        <div className="space-y-1">
+                          <div className="text-xs font-bold text-white tracking-tight truncate font-mono">
+                            {simSubdomain ? `${simSubdomain}.` : ''}starkindle.com
+                          </div>
+                          <p className="text-[10px] text-slate-400 italic leading-relaxed font-serif">
+                            &ldquo;{
+                              simIndustry === 'tech' ? "Igniting the next frontier of galactic infrastructure." :
+                              simIndustry === 'publishing' ? "Curating timeless wisdom with high-integrity literature." :
+                              simIndustry === 'ai' ? "Powering neural intelligence with massive telemetry engines." :
+                              "Seeding disruptive founders across deep-domain horizons."
+                            }&rdquo;
+                          </p>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2 pt-2 border-t border-neutral-900 text-[9px] font-mono text-slate-350">
+                          <div>
+                            <span className="block text-slate-500 text-[8px]">SANDBOX TIME</span>
+                            <span className="font-bold text-emerald-400">0 Days (Bypassed)</span>
+                          </div>
+                          <div>
+                            <span className="block text-slate-500 text-[8px]">TENURE POWER</span>
+                            <span className="font-bold text-indigo-300">17 Years Authority</span>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {activeTab === 'specs' && (
+                    <motion.div
+                      key="specs_tab"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="space-y-4 flex flex-col justify-between h-full flex-1"
+                    >
+                      <div className="space-y-4">
+                        <div className="space-y-1">
+                          <h3 className="text-sm font-extrabold text-slate-900 tracking-tight">Technical Credentials &amp; Verification</h3>
+                          <p className="text-[11px] text-slate-500">
+                            Comprehensive properties verified directly from the central domain registry databases.
+                          </p>
+                        </div>
+
+                        {/* Specs Grid */}
+                        <div className="grid grid-cols-2 gap-2 text-xs">
+                          <div className="bg-slate-50 border border-slate-150 p-2 rounded-lg text-left">
+                            <span className="block text-[8px] font-bold text-slate-400 uppercase tracking-widest font-mono">REGISTRY AGE</span>
+                            <span className="font-extrabold text-slate-800">17 Years (2009)</span>
+                          </div>
+                          <div className="bg-slate-50 border border-slate-150 p-2 rounded-lg text-left">
+                            <span className="block text-[8px] font-bold text-slate-400 uppercase tracking-widest font-mono">CLEAN TITLE</span>
+                            <span className="font-extrabold text-emerald-650 flex items-center gap-1">
+                              Vetted &amp; Clear
+                            </span>
+                          </div>
+                          <div className="bg-slate-50 border border-slate-150 p-2 rounded-lg text-left">
+                            <span className="block text-[8px] font-bold text-slate-400 uppercase tracking-widest font-mono">METRIC CLASS</span>
+                            <span className="font-extrabold text-slate-800">High Rhythm Compound</span>
+                          </div>
+                          <div className="bg-slate-50 border border-slate-150 p-2 rounded-lg text-left">
+                            <span className="block text-[8px] font-bold text-slate-400 uppercase tracking-widest font-mono">MEMORABILITY</span>
+                            <span className="font-extrabold text-indigo-650 font-mono">9.8 / 10 Score</span>
+                          </div>
+                        </div>
+
+                        {/* Security check banner */}
+                        <div className="bg-emerald-50 border border-emerald-100 p-3 rounded-lg flex items-start gap-2.5">
+                          <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                          <div>
+                            <span className="block text-[9px] font-extrabold text-emerald-950 font-mono tracking-wide uppercase">TRADEMARK &amp; RESTRICTION CLEARANCE</span>
+                            <p className="text-[10px] text-emerald-800 leading-normal mt-0.5">
+                              Certified clean title. No trademark limits, registry holds, or spam blocklists. Unrestricted globally.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="pt-2">
+                        <a 
+                          href={GODADDY_LINK}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full inline-flex items-center justify-center gap-1 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-3 px-4 rounded-xl transition-all cursor-pointer"
+                        >
+                          <span>Review on GoDaddy Central Registry</span>
+                          <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
+                        </a>
+                      </div>
+                    </motion.div>
+                  )}
+
+                </div>
+              </div>
             </div>
-          </div>
+
+          </motion.div>
         </main>
+      </div>
+
+      {/* Subtle Scrolling Ticker component */}
+      <div className="w-full bg-neutral-900 text-white py-3 overflow-hidden relative border-y border-neutral-800" id="trust-ticker-container">
+        {/* Left and right gradient masks for a smooth fade edge */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-neutral-900 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-neutral-900 to-transparent z-10 pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-4 flex items-center gap-4">
+          {/* Label */}
+          <div className="shrink-0 flex items-center gap-1.5 bg-indigo-500/20 border border-indigo-400/30 px-2.5 py-1 rounded text-[10px] font-extrabold uppercase tracking-wider text-indigo-300 font-mono">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            Authority Indicators
+          </div>
+          
+          {/* Marquee Track */}
+          <div className="overflow-hidden flex w-full relative">
+            <motion.div 
+              className="flex gap-8 shrink-0 min-w-full"
+              animate={{ x: [0, "-50%"] }}
+              transition={{
+                ease: "linear",
+                duration: 25,
+                repeat: Infinity,
+              }}
+            >
+              {/* Render items twice for infinite loop seamless scroll */}
+              {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-2 shrink-0 text-xs font-sans">
+                  <span className="font-bold text-slate-100">{item.label}</span>
+                  <span className="text-[10px] bg-neutral-800 px-2 py-0.5 rounded border border-neutral-700 text-slate-400 flex items-center gap-1">
+                    {item.type || item.status} 
+                    {item.price && <strong className="text-emerald-400 font-mono font-bold">{item.price}</strong>}
+                    {!item.price && item.status && <span className="text-indigo-300">{item.status}</span>}
+                  </span>
+                  <span className="text-neutral-600 font-extrabold text-xs ml-2">•</span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
       </div>
 
       {/* 3. LAYER: Brand Advantages (Key Pedigree Pillars) */}
